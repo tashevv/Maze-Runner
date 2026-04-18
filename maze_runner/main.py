@@ -21,6 +21,15 @@ def format_time(elapsed):
     else:
         return f"{seconds}s"
 
+def input_f(key):
+    if key == ord('q'): # Quit
+        curses.endwin()  # cleanly close curses first
+        exit()
+    elif key == ord('r'): # Restart
+        curses.endwin()  # cleanly close curses first
+        os.execv(sys.executable, [sys.executable] + sys.argv)
+    
+
 def main(stdscr):
     curses.start_color()
     curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)  # player color
@@ -71,18 +80,13 @@ def main(stdscr):
         
         stdscr.refresh()
         
-        key = stdscr.getch()
-        
         # Calculate new position
         new_x, new_y = player_x, player_y
 
-        if key == ord('q'): # Quit
-            curses.endwin()  # cleanly close curses first
-            exit()
-        elif key == ord('r'): # Restart
-            curses.endwin()  # cleanly close curses first
-            os.execv(sys.executable, [sys.executable] + sys.argv)
-        elif key == curses.KEY_UP:
+        # Input logic
+        key = stdscr.getch()
+        input_f(key)
+        if key == curses.KEY_UP:
             new_y -= 1
         elif key == curses.KEY_DOWN:
             new_y += 1
@@ -93,19 +97,13 @@ def main(stdscr):
 
         # Collision check (THIS is the important part)
         if maze.get((new_x, new_y)) != WALL:
-            player_x, player_y = new_x, new_y
-
+            
             # Check if Exit is reached
             if player_x == WIDTH - 2 and player_y == HEIGHT - 2:
                 stdscr.addstr(footer_y + 2, 0, "YOU ESCAPED THE MAZE!", curses.A_BOLD)
-                stdscr.timeout(1000000)
-                stdscr.refresh()
-
-                stdscr.nodelay(False)
-                stdscr.getch()
                 
-                # Restart after timeout
-                curses.endwin()  # cleanly close curses first
-                os.execv(sys.executable, [sys.executable] + sys.argv)
+                curses.wrapper(main) # End game logic needs fixing
+            # Assign new player position   
+            player_x, player_y = new_x, new_y    
         
 curses.wrapper(main)
