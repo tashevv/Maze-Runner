@@ -1,7 +1,8 @@
 import random
 
-WIDTH = 39 # random.randrange(9, 49, 2) # Width of the maze (must be odd).
-HEIGHT = 19 # random.randrange(9, 49, 2) # Height of the maze (must be odd).
+factor = random.randrange(5, 29, 2)
+WIDTH = factor * 2 - 1 # Width of the maze (must be odd).
+HEIGHT = factor # Height of the maze (must be odd).
 assert WIDTH % 2 == 1 and WIDTH >= 3
 assert HEIGHT % 2 == 1 and HEIGHT >= 3
 SEED = random.randint(1, 32768) # Asign random seed value
