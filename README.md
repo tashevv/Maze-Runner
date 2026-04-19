@@ -7,4 +7,5 @@ maze_runner/\
 ├── main.py             # game\
 └── lib/                # local libs
 
-![demo2](maze_demo_2.jpg)
+![demo2](maze_demo_2.jpg)\
+![demo](maze_demo.gif)\
