@@ -1,5 +1,5 @@
 # Maze-Runner
-Simple labyrinth game written in python
+Simple labyrinth game written in python using procedural generation
 
 maze_runner/\
 │\
