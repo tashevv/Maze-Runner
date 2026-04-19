@@ -28,7 +28,6 @@ def input_f(key):
     elif key == ord('r'): # Restart
         curses.endwin()  # cleanly close curses first
         os.execv(sys.executable, [sys.executable] + sys.argv)
-    
 
 def main(stdscr):
     curses.start_color()
