@@ -44,7 +44,8 @@ def main(stdscr):
 
     start_time = time.time()
 
-    while True:
+    RUNNING = True
+    while RUNNING:
         stdscr.clear()
 
         # HEADER
@@ -97,13 +98,16 @@ def main(stdscr):
 
         # Collision check (THIS is the important part)
         if maze.get((new_x, new_y)) != WALL:
-            
             # Check if Exit is reached
             if player_x == WIDTH - 2 and player_y == HEIGHT - 2:
-                stdscr.addstr(footer_y + 2, 0, "YOU ESCAPED THE MAZE!", curses.A_BOLD)
-                
-                curses.wrapper(main) # End game logic needs fixing
+                RUNNING = False
             # Assign new player position   
             player_x, player_y = new_x, new_y    
-        
+
+    # End game
+    stdscr.addstr(footer_y + 2, 0, "YOU ESCAPED THE MAZE!", curses.A_BOLD)
+    while True:
+        # Quit or Restar
+        key = stdscr.getch()
+        input_f(key)
 curses.wrapper(main)
