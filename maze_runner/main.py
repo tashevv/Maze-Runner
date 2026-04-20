@@ -2,7 +2,7 @@ import sys
 import os
 
 # Force window size to be able to generate larger mazes
-os.system("mode con: cols=80 lines=40")
+os.system("mode con: cols=80 lines=45")
 
 # Add the local 'lib' folder to Python path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "lib"))
