@@ -1,10 +1,10 @@
 import random
+import sys
 
-factor = random.randrange(5, 29, 2)
+factor = random.randrange(5, 35, 2) # Random scale factor for the size of the maze
 WIDTH = factor * 2 - 1 # Width of the maze (must be odd).
 HEIGHT = factor # Height of the maze (must be odd).
-assert WIDTH % 2 == 1 and WIDTH >= 3
-assert HEIGHT % 2 == 1 and HEIGHT >= 3
+
 SEED = random.randint(1, 32768) # Asign random seed value
 random.seed(SEED)
 
@@ -12,13 +12,13 @@ random.seed(SEED)
 EMPTY = ' '
 MARK = '@'
 WALL = chr(9608) # Character 9608 is '█'
-NORTH, SOUTH, EAST, WEST = 'n', 's', 'e', 'w'    
+NORTH, SOUTH, EAST, WEST = 'n', 's', 'e', 'w'
 
 # Create the filled-in maze data structure to start:
 maze = {}
 for x in range(WIDTH):
     for y in range(HEIGHT):
-        maze[(x, y)] = WALL # Every space is a wall at first.
+        maze[(x, y)] = WALL
 
 def visit(x, y):
     """"Carve out" empty spaces in the maze at x, y and then
@@ -75,5 +75,5 @@ def visit(x, y):
             visit(nextX, nextY) # Recursively visit this space.
 
 # Carve out the paths in the maze data structure:
-hasVisited = [(1, 1)] # Start by visiting the top-left corner.
+hasVisited = [(1, 1)]
 visit(1, 1)
