@@ -1,6 +1,9 @@
 import sys
 import os
 
+# Force window size to be able to generate larger mazes
+os.system("mode con: cols=80 lines=40")
+
 # Add the local 'lib' folder to Python path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "lib"))
 
@@ -106,7 +109,7 @@ def main(stdscr):
     # End game
     stdscr.addstr(footer_y + 2, 0, "YOU ESCAPED THE MAZE!", curses.A_BOLD)
     while True:
-        # Quit or Restar
+        # Quit or Restart
         key = stdscr.getch()
         input_f(key)
 curses.wrapper(main)
