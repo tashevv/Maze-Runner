@@ -8,4 +8,4 @@ maze_runner/\
 └── lib/                # local libs
 
 ![demo2](maze_demo_2.jpg)\
-![demo](maze_demo.gif)\
+![demo](maze_demo.gif)
