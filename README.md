@@ -1,4 +1,4 @@
-# Maze-Runner
+# MAZE RUNNER v1.0
 Simple labyrinth game written in python using procedural generation
 
 maze_runner/\
