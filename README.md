@@ -1,6 +1,6 @@
 # MAZE RUNNER
 
-Simple labyrinth game written in python using procedural generation
+A procedurally generated maze game.
 
 maze_runner/\
 ├── .git/\
